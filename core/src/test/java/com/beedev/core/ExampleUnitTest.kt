@@ -1,4 +1,4 @@
-package com.beedev.exampleproject
+package com.beedev.core
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
