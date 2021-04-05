@@ -46,10 +46,27 @@ android {
 
 dependencies {
     api project (':data')
+
     api rootProject.ext.androidX
     api rootProject.ext.androidXAppcompat
     api rootProject.ext.androidXMaterial
+    api rootProject.ext.androidXViewModelScope
+    api rootProject.ext.androidXLifecycleScope
+    api rootProject.ext.androidXLiveData
 
+    api rootProject.ext.coroutinesAndroid
+
+    api rootProject.ext.koinAndroid
+
+    api rootProject.ext.retrofit
+    api rootProject.ext.retrofitGsonConverter
+    api rootProject.ext.retrofitLoggingInterceptors
+
+    api rootProject.ext.timber
+
+    testImplementation rootProject.ext.assertj
+    testImplementation rootProject.ext.coroutinesTest
+    testImplementation rootProject.ext.instantTaskExecutorRule
     testImplementation rootProject.ext.junit
     testImplementation rootProject.ext.mockito
 }

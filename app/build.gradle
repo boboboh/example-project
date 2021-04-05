@@ -57,7 +57,4 @@ android {
 
 dependencies {
     implementation project(':core')
-
-    testImplementation rootProject.ext.junit
-    testImplementation rootProject.ext.mockito
 }
