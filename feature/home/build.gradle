@@ -1,7 +1,6 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +8,6 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.beedev.exampleproject"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -18,12 +16,12 @@ android {
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
     }
 
+
     flavorDimensions "mode"
 
     productFlavors {
         devMode {
             dimension "mode"
-            applicationIdSuffix ".dev"
             buildConfigField("Boolean", "DEBUG_MODE", "true")
         }
 
@@ -56,5 +54,14 @@ android {
 }
 
 dependencies {
-    implementation project(':shared')
+    api project(':shared')
+
+    testImplementation rootProject.ext.assertj
+    testImplementation rootProject.ext.coroutinesTest
+    testImplementation rootProject.ext.instantTaskExecutorRule
+    testImplementation rootProject.ext.junit
+    testImplementation rootProject.ext.mockito
+
+    androidTestImplementation rootProject.ext.instrumentedTest
+    androidTestImplementation rootProject.ext.espresso
 }

@@ -36,6 +36,10 @@ ext {
     androidXLifecycleScope = "androidx.lifecycle:lifecycle-runtime-ktx:$androidXLifecycleVersion"
     androidXLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:$androidXLifecycleVersion"
 
+    //Chucker
+    chuckerDebug = "com.github.chuckerteam.chucker:library:$chuckerVersion"
+    chuckerRelease = "com.github.chuckerteam.chucker:library-no-op:$chuckerVersion"
+
     //Coroutines
     coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
@@ -60,9 +64,7 @@ ext {
     mockito = "org.mockito:mockito-core:$mockitoVersion"
 
     //UITest
-    uiTest = {
-        instrumentedTest = 'androidx.test.ext:junit:1.1.2'
-        espresso "androidx.test.espresso:espresso-core:$espressoVersion"
-    }
+    instrumentedTest = 'androidx.test.ext:junit:1.1.2'
+    espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 

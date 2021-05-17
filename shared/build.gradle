@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        devMode {
+            dimension "mode"
+            buildConfigField("Boolean", "DEBUG_MODE", "true")
+            buildConfigField("String", "DOMAIN", "\"https://exprojects-beb76.firebaseio.com/\"")
+        }
+
+        productionMode {
+            dimension "mode"
+            buildConfigField("Boolean", "DEBUG_MODE", "false")
+            buildConfigField("String", "DOMAIN", "\"https://exprojects-beb76.firebaseio.com/\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.targetCompatibilityVersion
+        targetCompatibility rootProject.ext.targetCompatibilityVersion
+    }
+
+    kotlinOptions {
+        jvmTarget = rootProject.ext.targetCompatibilityVersion
+    }
+}
+
+dependencies {
+    api project (':core')
+
+    api rootProject.ext.androidX
+    api rootProject.ext.androidXAppcompat
+    api rootProject.ext.androidXMaterial
+    api rootProject.ext.androidXViewModelScope
+    api rootProject.ext.androidXLifecycleScope
+    api rootProject.ext.androidXLiveData
+
+    api rootProject.ext.coroutinesAndroid
+
+    api rootProject.ext.koinAndroid
+
+    api rootProject.ext.retrofit
+    api rootProject.ext.retrofitGsonConverter
+    api rootProject.ext.retrofitLoggingInterceptors
+
+    api rootProject.ext.timber
+
+    debugApi rootProject.ext.chuckerDebug
+    releaseImplementation rootProject.ext.chuckerRelease
+
+    testImplementation rootProject.ext.assertj
+    testImplementation rootProject.ext.coroutinesTest
+    testImplementation rootProject.ext.instantTaskExecutorRule
+    testImplementation rootProject.ext.junit
+    testImplementation rootProject.ext.mockito
+}
