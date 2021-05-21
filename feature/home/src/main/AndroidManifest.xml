@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.beedev.home">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.beedev.home">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity android:name=".presentation.MainActivity" />
+    </application>
 
 </manifest>

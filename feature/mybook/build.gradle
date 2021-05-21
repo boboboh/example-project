@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'kotlinx-serialization'
 }
 
 android {
@@ -15,8 +15,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
-        consumerProguardFiles "consumer-rules.pro"
     }
+
 
     flavorDimensions "mode"
 
@@ -24,13 +24,27 @@ android {
         devMode {
             dimension "mode"
             buildConfigField("Boolean", "DEBUG_MODE", "true")
-            buildConfigField("String", "DOMAIN", "\"https://exampleproject-ae80a-default-rtdb.firebaseio.com\"")
         }
 
         productionMode {
             dimension "mode"
             buildConfigField("Boolean", "DEBUG_MODE", "false")
-            buildConfigField("String", "DOMAIN", "\"https://exampleproject-ae80a-default-rtdb.firebaseio.com\"")
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -45,36 +59,16 @@ android {
 }
 
 dependencies {
-    api project (':core')
+    api project(':shared')
 
-    api rootProject.ext.androidX
-    api rootProject.ext.androidXAppcompat
-    api rootProject.ext.androidXMaterial
-    api rootProject.ext.androidXViewModelScope
-    api rootProject.ext.androidXLifecycleScope
-    api rootProject.ext.androidXCommonLifecycleScope
-    api rootProject.ext.androidXLiveData
-
-    api rootProject.ext.coroutinesAndroid
-
-    api rootProject.ext.glide
-
-    api rootProject.ext.koinAndroid
-
-    api rootProject.ext.realtimeDatabase
-
-    api rootProject.ext.retrofit
-    api rootProject.ext.retrofitGsonConverter
-    api rootProject.ext.retrofitLoggingInterceptors
-
-    api rootProject.ext.timber
-
-    debugApi rootProject.ext.chuckerDebug
-    releaseImplementation rootProject.ext.chuckerRelease
+    implementation rootProject.ext.kotlinSerialization
 
     testImplementation rootProject.ext.assertj
     testImplementation rootProject.ext.coroutinesTest
     testImplementation rootProject.ext.instantTaskExecutorRule
     testImplementation rootProject.ext.junit
     testImplementation rootProject.ext.mockito
+
+    androidTestImplementation rootProject.ext.instrumentedTest
+    androidTestImplementation rootProject.ext.espresso
 }

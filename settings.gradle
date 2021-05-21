@@ -1,5 +1,9 @@
-include ':feature:home'
+include ':app'
+
 include ':core'
 include ':shared'
-include ':app'
+
+include ':feature:mybook'
+include ':feature:home'
+
 rootProject.name = "example-project"

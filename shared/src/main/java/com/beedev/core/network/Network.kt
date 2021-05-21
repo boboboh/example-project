@@ -41,7 +41,7 @@ private val chuckerInterceptor = ChuckerInterceptor.Builder(ShareModule.getConte
 
 
 private fun httpClient(): OkHttpClient {
-    val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+    val httpLoggingInterceptor = HttpLoggingInterceptor(CustomHttpLogging())
     val clientBuilder = OkHttpClient.Builder()
     if (BuildConfig.DEBUG_MODE) {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
